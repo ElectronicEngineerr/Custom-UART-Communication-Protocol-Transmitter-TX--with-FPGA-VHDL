@@ -64,9 +64,9 @@ During the `TX_DATA` state:
 !!! THE BAUD RATE OF 5,000,000 HAS BEEN USED FOR EASIER VISUALIZATION DURING SIMULATION.
 
 
-![UART TX SIMULATION](simulation_data_in_A8_F2.png)
-![UART TX SIMULATION](simulation_data_in_AA.png)
-![UART TX SUMILATION](simulation_data_in_CB.png)
+![UART TX SIMULATION](images/simulation_data_in_A8_F2.png)
+![UART TX SIMULATION](images/simulation_data_in_AA.png)
+![UART TX SUMILATION](images/simulation_data_in_CB.png)
 
 
 ### Expected Output
