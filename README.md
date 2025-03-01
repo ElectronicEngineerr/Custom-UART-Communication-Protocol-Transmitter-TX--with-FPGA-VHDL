@@ -6,7 +6,7 @@ ElectronicEngineerr/UART-Communication-Protocol-with-FPGA-VHDL
 
 This project is a VHDL-based UART (Universal Asynchronous Receiver-Transmitter) transmitter designed to send serial data at a specific baud rate. The design includes both the implementation of the UART transmitter and a corresponding test bench for functional verification. 
 
-![UART TX SIMULATION](UART_TX_protocol.png)
+![UART TX SIMULATION](images/UART_TX_protocol.png)
 
 The transmitter follows the UART protocol, which includes:
 - **1 Start Bit**: Marks the beginning of data transmission.
