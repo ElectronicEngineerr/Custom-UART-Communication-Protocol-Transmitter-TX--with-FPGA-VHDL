@@ -6,7 +6,7 @@ entity tb_UART_TX is
 
 			generic (
 						c_clock_freq : integer := 100_000_000;
-						c_baud_rate  : integer := 5_000_000;
+						c_baud_rate  : integer := 115_200;
 						c_stop_bit   : integer := 2
 			);
 
@@ -20,11 +20,11 @@ COMPONENT UART_TX is
 						c_baud_rate  : integer := 115_200;
 						c_stop_bit   : integer := 2
 		);		
-		port (			-- INPUTS
+		port (			
 						clk          	: in std_logic; -- 100 MHz
 						tx_start_bit    : in std_logic;
 						tx_data_in   	: in std_logic_Vector(7 downto 0); 
-						-- OUTPUTS
+						
 						tx_data_output	: out std_logic; -- tx output wire
 						tx_done_tick  	: out std_logic  -- Is comm done ?					
 		);
@@ -35,8 +35,10 @@ signal tx_start_bit 	: std_logic := '0';
 signal tx_data_in   	: std_logic_Vector(7 downto 0) := (others => '0');
 signal tx_data_output  	: std_logic;
 signal tx_done_tick     : std_logic;
-
 signal clock_period     : time := 10 ns;
+signal c_hex_F2			: std_logic_Vector(7 downto 0) := x"F2";
+signal c_hex_B1			: std_logic_Vector(7 downto 0) := x"B1";
+
 
 begin
 
@@ -68,14 +70,22 @@ end process CLOCK_GENERATOR;
 P_STIMULI : process
 	begin
 		
-			wait for 100 ns;
+			tx_data_in 		<= x"00";
+			tx_start_bit 	<= '0';
+		
+		
+			wait for clock_period*10;
+			
+			tx_data_in <= c_hex_F2;
 			tx_start_bit <= '1';
-			tx_data_in <= x"CB";
-			wait for 200 ns;
+			wait for clock_period;
+			tx_start_bit <= '0';			
+			wait for 1.2 us;
+			
+			tx_data_in <= c_hex_B1;
+			tx_start_bit <= '1';
+			wait for clock_period;
 			tx_start_bit <= '0';
-			
-			
-
 			
 			
 end process;
