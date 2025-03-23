@@ -76,6 +76,7 @@ The test bench sends a sequence of bytes (`0xA8`, `0xF2`, `0xAA`, `0xCB`) throug
 
 ## Future Improvements
 
+
 - **Parity Bit**: Add support for parity bit generation.
 - **Full UART Support**: Include a UART receiver module.
 - **FIFO Integration**: Buffer incoming data for continuous transmission.
